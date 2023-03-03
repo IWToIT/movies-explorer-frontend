@@ -1,0 +1,44 @@
+.nav-tab {
+  display: flex;
+
+  @media screen and(max-width: 767px) {
+    gap: 6px;
+    justify-content: center;
+  }
+
+  &__link {
+    margin-left: 70px;
+    min-width: 129px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: inherit;
+    border-radius: 3px;
+    border: 1px solid #FFFFFF;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    transition: 0.5s;
+
+    @media screen and(max-width: 1023px) {
+      margin: 0 0 76px;
+    }
+
+    @media screen and(max-width: 767px) {
+      margin-bottom: 76px;;
+      min-width: 82px;
+      min-height: 26px;
+      border-radius: 6px;
+      font-size: 10px;
+      line-height: 16px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      transition: 0.5s;
+    }
+  }
+}
