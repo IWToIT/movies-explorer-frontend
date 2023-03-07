@@ -1,9 +1,9 @@
-function Footer({ location }) {
-  const notAllowedPaths = ['/', '/movies', '/saved-movies'].includes(location.pathname);
+import { otherPaths } from "../../constants/constants";
 
+function Footer({ location }) {
   return (
     <>
-      {notAllowedPaths && (
+      {otherPaths.includes(location.pathname) && (
         <footer className="footer">
           <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
           <div className="footer__container">

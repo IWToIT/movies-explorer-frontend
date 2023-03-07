@@ -13,4 +13,11 @@
     padding: 0 0 239px;
     margin: 0;
   }
+
+  &__error-message {
+    text-align: center;
+    align-self: center;
+    max-width: 60%;
+    color: #fff;
+  }
 }
