@@ -94,7 +94,6 @@
 
       &:nth-of-type(2) {
         grid-area: films;
-        border-bottom: 2px solid #ffffff;
       }
 
       &:nth-of-type(3) {
@@ -146,6 +145,6 @@
 
   &__underline {
     grid-area: underline;
-    border: 1px solid black;
+    border: 1px solid #fff;
   }
 }
