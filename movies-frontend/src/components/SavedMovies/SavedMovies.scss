@@ -1,23 +1,23 @@
 .saved-movies {
+  margin: 0 70px;
   padding-bottom: 140px;
   display: flex;
   flex-direction: column;
-  margin: 0 70px;
 
   @media screen and(max-width: 769px) {
-    padding: 0 30px 167px;
     margin: 0;
+    padding: 0 30px 167px;
   }
 
   @media screen and(max-width: 767px) {
-    padding: 0 0 239px;
     margin: 0;
+    padding: 0 0 239px;
   }
 
-  &__error-message {
-    text-align: center;
-    align-self: center;
+  &__err-message {
     max-width: 60%;
     color: #fff;
+    text-align: center;
+    align-self: center;
   }
 }

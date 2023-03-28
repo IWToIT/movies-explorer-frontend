@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormWithValidation } from '../../hooks/validationForms';
 
-function Profile({ isBlockingButton, onUpdateUser, onLogout }) {
+function Profile({ isBlockButton, onUpdateUser, onLogout }) {
   const currentUser = useContext(CurrentUserContext);
 
   const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
@@ -60,12 +60,12 @@ function Profile({ isBlockingButton, onUpdateUser, onLogout }) {
           className={`profile__button profile__button_type_submit ${
             notValidToUpdate ? 'profile__button_type_error' : ''
           }`}
-          disabled={notValidToUpdate && isBlockingButton}
+          disabled={notValidToUpdate && isBlockButton}
         >
           Редактировать
         </button>
       </form>
-      <button disabled={isBlockingButton} onClick={onLogout} className="profile__button">
+      <button disabled={isBlockButton} onClick={onLogout} className="profile__button">
         Выйти из аккаунта
       </button>
     </section>

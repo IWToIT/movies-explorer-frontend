@@ -1,18 +1,19 @@
 .promo {
+  padding-bottom: 75px;
   display: flex;
-  padding-bottom: 30px;
+  align-items: start;
   flex-direction: column;
   gap: 36px;
-  align-items: start;
-  background-color: #073042;
-  color: white;
+  color: #fff;
   background-image: url(../../images/web-logo.png);
   background-repeat: no-repeat;
-  background-position: 90% 25%;
+  background-position: 90% 35%;
+  background-color: #073042;
 
   @media screen and (max-width: 769px) {
+    padding: 0 20px 76px;
     justify-content: center;
-    padding: 0 20px;
+    align-items: center;
     gap: 22px;
     border-radius: 10px;
     background-position: 50% 10%;
@@ -26,14 +27,14 @@
   }
 
   @media screen and (max-width: 321px) {
-    background-position: 50% 5%;
     justify-content: center;
+    background-position: 50% 5%;
   }
 
   &__title {
     margin: 75px 0 0 70px;
-    text-align: left;
     max-width: 640px;
+    text-align: left;
     font-weight: 400;
     font-size: 50px;
     line-height: 58px;
@@ -41,23 +42,23 @@
 
     @media screen and (max-width: 1023px) {
       margin: 320px auto 0;
+      max-width: 680px;
       text-align: center;
       font-size: 40px;
       line-height: 52px;
-      max-width: 680px;
     }
 
     @media screen and (max-width: 769px) {
+      max-width: 680px;
       text-align: center;
       font-size: 40px;
       line-height: 52px;
-      max-width: 680px;
     }
 
     @media screen and (max-width: 767px) {
+      max-width: 292px;
       font-size: 29px;
       line-height: 37px;
-      max-width: 292px;
     }
   }
 
@@ -66,13 +67,13 @@
     opacity: 0.5;
 
     @media screen and (max-width: 1023px) {
-      text-align: center;
       margin: 0 auto;
+      text-align: center;
     }
 
     @media screen and (max-width: 769px) {
-      text-align: center;
       max-width: 680px;
+      text-align: center;
     }
   }
 }

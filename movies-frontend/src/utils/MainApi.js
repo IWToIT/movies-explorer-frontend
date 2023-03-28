@@ -1,5 +1,5 @@
 export const BASE_URL = 'https://api.awesomemandiplom.nomoredomains.work/';
-// export const BASE_URL = 'http://localhost:3001/'; // для разработки локально
+// export const BASE_URL = 'http://localhost:3001/'; // локалка
 
 function request({ url, method = 'POST', data }) {
   return fetch(`${BASE_URL}${url}`, {
@@ -74,7 +74,7 @@ const saveMovie = (reqBody) => {
     data: {
       country: reqBody.country,
       director: reqBody.director,
-      duration: reqBody.duration,
+      length: reqBody.length,
       year: reqBody.year,
       description: reqBody.description,
       image: reqBody.image instanceof Object ? `https://api.nomoreparties.co/${reqBody.image.url}` : reqBody.image,

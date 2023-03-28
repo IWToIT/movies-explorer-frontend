@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
+import Nav from '../Nav/Nav.jsx';
 import { authPath } from '../../constants/constants';
 import { moviesPath } from '../../constants/constants';
 import { useContext } from 'react';
@@ -35,13 +35,13 @@ function Header({ menuActivity, onMenuToggle, location }) {
                 >
                   <span className={`header__menu ${menuActivity ? 'header__menu_active' : ''}`} />
                 </div>
-                <Navigation location={location} menuActivity={menuActivity} />
+                <Nav location={location} menuActivity={menuActivity} />
               </>
             )}
           </>
         ) : (
           <>
-            <Navigation location={location} menuActivity={menuActivity} />
+            <Nav location={location} menuActivity={menuActivity} />
             <div
               onClick={onMenuToggle}
               className='header__menu-container'

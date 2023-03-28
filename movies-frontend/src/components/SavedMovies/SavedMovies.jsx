@@ -2,38 +2,38 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 
 function SavedMovies({  
-  isBlockingButton,
+  isBlockButton,
   showMovies,
   savedMovies,
-  savedFilterMovies,
+  savedmoviesFilter,
   resStatus,
   isSavedSearch,
-  location,
   onSearchSavedFilms,
   onMovieLike,
-  checkboxFilter, 
+  checkboxFilter,
+  location, 
 }) {
   return (
     <section className="saved-movies">
       <SearchForm 
-        isBlockingButton={isBlockingButton}
+        isBlockButton={isBlockButton}
         checkboxFilter={checkboxFilter}
         onSearchSavedFilms={onSearchSavedFilms}
         location={location}
       />
       {!savedMovies.length ? (
-        <p className="saved-movies__error-message">Нет сохраненных фильмов.</p>
+        <p className="saved-movies__err-message">Нет сохраненных фильмов.</p>
       ) : (
-        !savedFilterMovies.length && isSavedSearch && <p className="saved-movies__error-message">Ничего не найдено.</p>
+        !savedmoviesFilter.length && isSavedSearch && <p className="saved-movies__err-message">Ничего не найдено.</p>
       )}
       <MoviesCardList 
+        isBlockButton={isBlockButton}
         showMovies={showMovies}
         savedMovies={savedMovies}
-        savedFilterMovies={savedFilterMovies}
+        savedmoviesFilter={savedmoviesFilter}
+        onMovieLike={onMovieLike}
         resStatus={resStatus}
         location={location}
-        onMovieLike={onMovieLike}
-        isBlockingButton={isBlockingButton}
       />
     </section>
   );

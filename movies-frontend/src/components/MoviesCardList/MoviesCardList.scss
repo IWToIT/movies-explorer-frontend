@@ -1,24 +1,27 @@
 .movies-card-list {
-  display: flex;
   padding-top: 71px;
-  gap: 40px;
+  display: flex;
   flex-direction: column;
+  gap: 40px;
 
   @media screen and (max-width: 769px) {
     padding-top: 61px;
   }
 
   @media screen and (max-width: 767px) {
+    margin: 0 auto;
     padding-top: 50px;
     min-width: 300px;
-    margin: 0 auto;
     gap: 20px;
   }
 
   &__button {
     margin: 21px 0 79px;
-    align-self: center;
     padding: 0;
+    min-width: 320px;
+    min-height: 36px;
+    align-self: center;
+    color: #fff;
     border: none;
     border-radius: 6px;
     background-color: #2F2F2F;
@@ -26,10 +29,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-    min-width: 320px;
-    min-height: 36px;
-    transition: 0.5s;
-    color: #ffffff;
+    transition: .5s;
 
     @media screen and (max-width: 769px) {
       margin: 41px 0 76px;
@@ -41,8 +41,8 @@
     }
 
     &:hover {
-      opacity: 0.8;
-      transition: 0.5s;
+      opacity: .8;
+      transition: .5s;
     }
   }
 }

@@ -1,11 +1,11 @@
 .search-form {
-  z-index: 1;
   padding: 69px 0 39px;
-  border-bottom: 1px solid rgba(170, 170, 170, .2);
   display: grid;
   grid-template: repeat(2, min-content) / calc(100% - 70px);
-  gap: 31px 0;
   grid-template-areas: 'input submit' 'checkbox checkbox';
+  gap: 31px 0;
+  border-bottom: 1px solid rgba(170, 170, 170, .2);
+  z-index: 1;
 
   @media screen and(max-width: 767px) {
     margin: 0 14px;
@@ -14,8 +14,8 @@
   }
 
   &__input {
-    grid-area: input;
     padding: 0 0 0 22px;
+    grid-area: input;
     background-color: #202020;
     color: #fff;
     border: 1.5px solid rgba(170, 170, 170, .2);
@@ -32,25 +32,25 @@
   }
 
   &__submit {
-    cursor: pointer;
-    grid-area: submit;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
+    padding: 0;
     min-width: 34px;
     min-height: 34px;
-    padding: 0;
+    cursor: pointer;
+    grid-area: submit;
     border: none;
-    color: white;
+    color: #fff;
     background-color: #202020;
-    transition: 0.5s;
+    transition: .5s;
     background-image: url(../../images/find.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
 
     &:hover {
-      opacity: 0.8;
-      transition: 0.5s;
+      opacity: .8;
+      transition: .5s;
     }
   }
 
@@ -58,11 +58,11 @@
     z-index: -1;
     min-height: 20px;
     min-width: 156px;
-    grid-area: checkbox;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     justify-self: center;
+    grid-area: checkbox;
     position: relative;
 
     @media screen and(max-width: 767px) {
@@ -71,20 +71,20 @@
   }
 
   &__checkbox {
-    position: absolute;
     width: 100%;
     height: 100%;
+    position: absolute;
     appearance: none;
 
     &::before {
+      min-width: 36px;
+      min-height: 20px;
       cursor: pointer;
       position: absolute;
       background-color: #3DDC84;
       border-radius: 20px;
       content: '';
-      min-width: 36px;
-      min-height: 20px;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     &:checked {
@@ -94,22 +94,22 @@
     }
 
     &::after {
+      min-width: 8px;
+      min-height: 8px;
       cursor: pointer;
       position: absolute;
-      background-color:  #FFFFFF;
+      background-color:  #fff;
       border-radius: 50%;
       top: 6px;
       left: 22px;
       content: '';
-      min-width: 8px;
-      min-height: 8px;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     &:checked {
       &::after {
         background-color: #3DDC84;
-        transition: 0.2s;
+        transition: .2s;
         left: 6px;
       }
     }
@@ -118,14 +118,14 @@
   &__checkbox-text {
     font-size: 12px;
     line-height: 18px;
-    color: #ffffff;
+    color: #fff;
 
     @media screen and(max-width: 767px) {
       font-size: 11px;
     }
   }
 
-  &__error {
+  &__err {
     color: #fff;
   }
 }

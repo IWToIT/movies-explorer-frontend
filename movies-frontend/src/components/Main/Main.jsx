@@ -1,6 +1,6 @@
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
-import Techs from '../Techs/Techs';
+import Technologies from '../Technologies/Technologies';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 
@@ -9,7 +9,7 @@ function Main() {
     <main className="main">
       <Promo />
       <AboutProject />
-      <Techs />
+      <Technologies />
       <AboutMe />
       <Portfolio />
     </main>

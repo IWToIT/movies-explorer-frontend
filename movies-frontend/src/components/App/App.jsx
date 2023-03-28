@@ -6,7 +6,7 @@ import {
   authPath,
   valueLocal,
   checkboxLocal,
-  duration,
+  length,
   moviesLocal,
   valueShowMovieForDesktop,
   valueShowMovieForMobile,
@@ -35,16 +35,16 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(true); // авторизованный ли пользователь
 
   const [allMovieslist, setAllMoviesList] = useState([]); // весь список фильмов с movieApi
-  const [filterMovies, setFilterMovies] = useState([]); // отфильтрованный список фильмов в movies
+  const [moviesFilter, setmoviesFilter] = useState([]); // отфильтрованный список фильмов в movies
   const [savedMovies, setSavedMovies] = useState([]); // список сохраненных фильмов
-  const [savedFilterMovies, setSavedFilterMovies] = useState([]); // отфильтрованный список фильмов в saved-movies
+  const [savedmoviesFilter, setSavedmoviesFilter] = useState([]); // отфильтрованный список фильмов в saved-movies
   const [showMovies, setShowMovies] = useState([]); // список отображаемых фильмов в movieCardList
 
   const [isOpenAuthPopup, setIsOpenAuthPopup] = useState(false); // popup с ответом от сервера
   const [resMessage, setResMessage] = useState(''); // сообщение в popup с ответом от сервера
   const [resStatus, setResStatus] = useState(true); // статус ответа от сервера
   const [isLoadingMovies, setIsLoadingMovies] = useState(false); // состояние загрузки с сервера фильмов
-  const [isBlockingButton, setIsBlockingButton] = useState(false); // блокировка кнопок
+  const [isBlockButton, setIsBlockingButton] = useState(false); // блокировка кнопок
   const [isLoading, setIsLoading] = useState(false); // состояние загрузки с сервера
 
   const [menuActivity, setMenuActivity] = useState(false); // меню
@@ -140,12 +140,12 @@ function App() {
   useEffect(() => {
     setShowMovies(
       location.pathname === '/movies'
-        ? filterMovies.slice(0, stepShowMovies)
+        ? moviesFilter.slice(0, stepShowMovies)
         : isSavedSearch
-        ? savedFilterMovies
+        ? savedmoviesFilter
         : savedMovies
     );
-  }, [filterMovies, savedMovies, isSavedSearch, savedFilterMovies, stepShowMovies, location.pathname]);
+  }, [moviesFilter, savedMovies, isSavedSearch, savedmoviesFilter, stepShowMovies, location.pathname]);
 
   // регистрация
   function handleRegister(name, email, password) {
@@ -232,9 +232,9 @@ function App() {
         setLoggedIn(false);
         setCurrentUser({ _id: '', email: '', name: '' });
         setAllMoviesList([]);
-        setFilterMovies([]);
+        setmoviesFilter([]);
         setSavedMovies([]);
-        setSavedFilterMovies([]);
+        setSavedmoviesFilter([]);
         setShowMovies([]);
         setFormValues({
           value: '',
@@ -280,11 +280,11 @@ function App() {
         ? setStepShowMovies(valueShowMovieForMobile)
         : setStepShowMovies(valueShowMovieForDesktop);
 
-      setFilterMovies(
+      setmoviesFilter(
         movieList.filter((i) => {
           if (checkbox) {
             // фильтр для короткометражек
-            return i.nameRU.toLowerCase().includes(value.toLowerCase()) && i.duration <= duration;
+            return i.nameRU.toLowerCase().includes(value.toLowerCase()) && i.length <= length;
           } else {
             // фильтр для фильмов
             return i.nameRU.toLowerCase().includes(value.toLowerCase());
@@ -329,17 +329,17 @@ function App() {
 
     // массив отфильтрованных короткометражных фильмов
     const savedShortSearch = savedMovies.filter(
-      (i) => i.nameRU.toLowerCase().includes(value.toLowerCase()) && i.duration <= duration
+      (i) => i.nameRU.toLowerCase().includes(value.toLowerCase()) && i.length <= length
     );
 
     if (savedSearch || savedShortSearch) {
       // если нашло что то в фильмах
       if (checkbox && savedShortSearch) {
         // если выбраны короткометражные фильмы и массив есть
-        setSavedFilterMovies([...savedShortSearch]);
+        setSavedmoviesFilter([...savedShortSearch]);
       } else if (savedSearch) {
         // если есть массив с фильтрованными фильмами
-        setSavedFilterMovies([...savedSearch]);
+        setSavedmoviesFilter([...savedSearch]);
       }
     }
   }
@@ -376,7 +376,7 @@ function App() {
         } else {
           // если сохранен и находимся в saved-movies то удаляем фильм из сохраненных
           setSavedMovies((state) => state.filter((c) => c.movieId !== movie.movieId));
-          setSavedFilterMovies((state) => state.filter((c) => c.movieId !== movie.movieId));
+          setSavedmoviesFilter((state) => state.filter((c) => c.movieId !== movie.movieId));
         }
       })
       .catch(() => {
@@ -416,10 +416,10 @@ function App() {
                   element={
                     loggedIn ? (
                       <Movies
-                        isBlockingButton={isBlockingButton}
+                        isBlockButton={isBlockButton}
                         allMovieslist={allMovieslist}
                         showMovies={showMovies}
-                        filterMovies={filterMovies}
+                        moviesFilter={moviesFilter}
                         savedMovies={savedMovies}
                         resStatus={resStatus}
                         isLoadingMovies={isLoadingMovies}
@@ -427,7 +427,7 @@ function App() {
                         formValues={formValues}
                         onSearchFilms={handleSearchFilms}
                         onMovieLike={handleMovieLike}
-                        onButtonMore={handleButtonMore}
+                        onButtonOfMore={handleButtonMore}
                         checkboxFilter={checkboxFilter}
                       />
                     ) : (
@@ -440,10 +440,10 @@ function App() {
                   element={
                     loggedIn ? (
                       <SavedMovies
-                        isBlockingButton={isBlockingButton}
+                        isBlockButton={isBlockButton}
                         showMovies={showMovies}
                         savedMovies={savedMovies}
-                        savedFilterMovies={savedFilterMovies}
+                        savedmoviesFilter={savedmoviesFilter}
                         resStatus={resStatus}
                         isSavedSearch={isSavedSearch}
                         location={location}
@@ -462,7 +462,7 @@ function App() {
                   element={
                     loggedIn ? (
                       <Profile
-                        isBlockingButton={isBlockingButton}
+                        isBlockButton={isBlockButton}
                         onUpdateUser={handleUpdateUser}
                         onLogout={handleLogout}
                       />
@@ -476,7 +476,7 @@ function App() {
                   element={
                     !currentUser._id ? (
                       <Register
-                        isBlockingButton={isBlockingButton}
+                        isBlockButton={isBlockButton}
                         resStatusOk={resStatus}
                         onRegister={handleRegister}
                       />
@@ -489,7 +489,7 @@ function App() {
                   path="/signin"
                   element={
                     !currentUser._id ? (
-                      <Login isBlockingButton={isBlockingButton} resStatusOk={resStatus} onLogin={handleLogin} />
+                      <Login isBlockButton={isBlockButton} resStatusOk={resStatus} onLogin={handleLogin} />
                     ) : (
                       <Navigate to="/" />
                     )

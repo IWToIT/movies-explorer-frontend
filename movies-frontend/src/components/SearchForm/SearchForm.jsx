@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-function SearchForm({ isBlockingButton, formValues, checkboxFilter, onSearchSavedFilms, location, onSearchFilms }) {
-  const [isInvalid, setInvalid] = useState(false);
+function SearchForm({ isBlockButton, formValues, checkboxFilter, onSearchSavedFilms, location, onSearchFilms }) {
+  const [isValid, setValid] = useState(false);
   const [searchValue, setSearchValue] = useState(location.pathname === '/movies' ? formValues.value : '');
   const [searchCheckbox, setCheckbox] = useState(location.pathname === '/movies' ? formValues.checkbox : false);
 
@@ -24,14 +24,11 @@ function SearchForm({ isBlockingButton, formValues, checkboxFilter, onSearchSave
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    // учитывать пустую строку поиска только на вкладке фильмов
     if (e.target[0].value === '' && location.pathname === '/movies') {
-      setInvalid(true);
+      setValid(true);
       return;
     }
-
-    setInvalid(false);
+    setValid(false);
 
     if (location.pathname === '/movies') {
       onSearchFilms(searchValue, searchCheckbox);
@@ -50,8 +47,8 @@ function SearchForm({ isBlockingButton, formValues, checkboxFilter, onSearchSave
         name="search"
         placeholder="Фильм"
       />
-      <span className="search-form__error">{isInvalid && 'Нужно ввести ключевое слово'}</span>
-      <button disabled={isBlockingButton} className="search-form__submit" type="submit"></button>
+      <span className="search-form__err">{isValid && 'Нужно ввести ключевое слово'}</span>
+      <button disabled={isBlockButton} className="search-form__submit" type="submit"></button>
       <label htmlFor="search-film" className="search-form__label">
         <span className="search-form__checkbox-text">Короткометражки</span>
         <input

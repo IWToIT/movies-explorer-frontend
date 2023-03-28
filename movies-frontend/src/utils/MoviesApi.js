@@ -11,14 +11,14 @@ class Api {
     return res.json();
   }
 
+  getMovies() {
+    return this._getFetch();
+  }
+
   _getFetch() {
     return fetch(this._baseUrl, {
       headers: this._headers,
     }).then((res) => this._getResponseData(res));
-  }
-
-  getMovies() {
-    return this._getFetch();
   }
 }
 

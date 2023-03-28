@@ -2,23 +2,23 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 
 function MoviesCardList({
-  isBlockingButton,
+  isBlockButton,
   showMovies,
   savedMovies,
-  filterMovies,
+  moviesFilter,
   resStatus,
   isLoadingMovies,
   location,
   onMovieLike,
-  onButtonMore,
+  onButtonOfMore,
 }) {
   return (
     <section className="movies-card-list">
       {isLoadingMovies ? (
         <Preloader />
       ) : !resStatus ? (
-        <p className="movies-card-list__error-message">
-          Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и
+        <p className="movies-card-list__err-message">
+          Во время запроса произошла ошибка. Подождите немного и
           попробуйте ещё раз.
         </p>
       ) : (
@@ -29,12 +29,12 @@ function MoviesCardList({
               key={movie.id || movie._id}
               savedMovies={savedMovies}
               onMovieLike={onMovieLike}
-              isBlockingButton={isBlockingButton}
+              isBlockButton={isBlockButton}
               location={location}
             />
           ))}
-          {location.pathname === '/movies' && filterMovies.length !== showMovies.length && (
-            <button onClick={onButtonMore} className="movies-card-list__button">
+          {location.pathname === '/movies' && moviesFilter.length !== showMovies.length && (
+            <button onClick={onButtonOfMore} className="movies-card-list__button">
               Ещё
             </button>
           )}

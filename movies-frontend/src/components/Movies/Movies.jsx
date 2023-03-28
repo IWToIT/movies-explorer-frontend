@@ -2,10 +2,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 
 function Movies({
-  isBlockingButton,
+  isBlockButton,
   allMovieslist,
   showMovies,
-  filterMovies,
+  moviesFilter,
   savedMovies,
   resStatus,
   isLoadingMovies,
@@ -13,31 +13,31 @@ function Movies({
   formValues,
   onSearchFilms,
   onMovieLike,
-  onButtonMore,
+  onButtonOfMore,
   checkboxFilter,
 }) {
   return (
     <section className="movies">
       <SearchForm
-        isBlockingButton={isBlockingButton}
+        isBlockButton={isBlockButton}
         checkboxFilter={checkboxFilter}
         formValues={formValues}
-        location={location}
         onSearchFilms={onSearchFilms}
+        location={location}
       />
-      <p className="movies__error-message">
+      <p className="movies__err-message">
         {!allMovieslist.length
-          ? 'После поиска здесь будет отображен список фильмов.'
-          : !filterMovies.length && 'Ничего не найдено.'}
+          ? 'Нет результатов.'
+          : !moviesFilter.length && 'Ничего не найдено.'}
       </p>
       <MoviesCardList
-        isBlockingButton={isBlockingButton}
+        isBlockButton={isBlockButton}
         showMovies={showMovies}
-        onButtonMore={onButtonMore}
+        onButtonOfMore={onButtonOfMore}
         onMovieLike={onMovieLike}
         resStatus={resStatus}
         isLoadingMovies={isLoadingMovies}
-        filterMovies={filterMovies}
+        moviesFilter={moviesFilter}
         savedMovies={savedMovies}
         location={location}
       />

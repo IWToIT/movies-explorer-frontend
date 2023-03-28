@@ -2,14 +2,14 @@ import { useCallback, useState } from 'react';
 import validator from 'validator';
 
 export function useFormWithValidation() {
+  const [isValid, setIsValid] = useState(false);
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
 
   const handleChange = (e) => {
     const target = e.target;
-    const name = target.name;
     const value = target.value;
+    const name = target.name;
 
     if (name === 'name' && target.validity.patternMismatch) {
       setErrors({ ...errors, [name]: 'Поле должно содержать только латиницу, кириллицу, пробел или "-".' });

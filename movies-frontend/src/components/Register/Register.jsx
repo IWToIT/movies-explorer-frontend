@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../hooks/validationForms';
 
-function Register({isBlockingButton, resStatus, onRegister }) {
+function Register({isBlockButton, resStatus, onRegister }) {
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -20,11 +20,11 @@ function Register({isBlockingButton, resStatus, onRegister }) {
           onChange={handleChange}
           value={values.name || ''}
           name="name"
-          required
-          pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
+          placeholder="Имя"
           type="text"
           className={`form__input ${errors.name ? 'form__input_type_error' : ''}`}
-          placeholder="Имя"
+          pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
+          required
         />
         <span className="form__text-error">{errors.name || ''}</span>
       </label>
@@ -34,10 +34,10 @@ function Register({isBlockingButton, resStatus, onRegister }) {
           onChange={handleChange}
           value={values.email || ''}
           name="email"
-          required
+          placeholder="E-mail"
           type="email"
           className={`form__input ${errors.email ? 'form__input_type_error' : ''}`}
-          placeholder="E-mail"
+          required
         />
         <span className="form__text-error">{errors.email || ''}</span>
       </label>
@@ -47,11 +47,11 @@ function Register({isBlockingButton, resStatus, onRegister }) {
           onChange={handleChange}
           value={values.password || ''}
           name="password"
-          required
+          placeholder="Пароль"
           minLength="6"
           type="password"
           className={`form__input ${errors.password ? 'form__input_type_error' : ''}`}
-          placeholder="Пароль"
+          required
         />
         <span className="form__text-error">{errors.password || ''}</span>
       </label>
@@ -60,13 +60,13 @@ function Register({isBlockingButton, resStatus, onRegister }) {
       </span>
       <button
         className={`form__button ${!isValid ? 'form__button_type_error' : ''}`}
-        disabled={!isValid && isBlockingButton}
+        disabled={!isValid && isBlockButton}
         type="submit"
       >
         Зарегистрироваться
       </button>
       <p className="form__text">
-        Уже зарегистрированы?
+        Зарегистрированы?
         <Link className="form__link" to="/signin">
           Войти
         </Link>
