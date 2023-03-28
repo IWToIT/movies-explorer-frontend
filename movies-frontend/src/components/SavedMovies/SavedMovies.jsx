@@ -1,13 +1,40 @@
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-/* import Preloader from "../Preloader/Preloader"; реализовать когда будет подключен API*/
 import SearchForm from '../SearchForm/SearchForm';
 
-function SavedMovies({ location }) {
+function SavedMovies({  
+  isBlockButton,
+  showMovies,
+  savedMovies,
+  savedmoviesFilter,
+  resStatus,
+  isSavedSearch,
+  onSearchSavedFilms,
+  onMovieLike,
+  checkboxFilter,
+  location, 
+}) {
   return (
     <section className="saved-movies">
-      <SearchForm />
-      {/* <Preloader /> реализовать когда будет подключен API */}
-      <MoviesCardList location={location} />
+      <SearchForm 
+        isBlockButton={isBlockButton}
+        checkboxFilter={checkboxFilter}
+        onSearchSavedFilms={onSearchSavedFilms}
+        location={location}
+      />
+      {!savedMovies.length ? (
+        <p className="saved-movies__err-message">Нет сохраненных фильмов.</p>
+      ) : (
+        !savedmoviesFilter.length && isSavedSearch && <p className="saved-movies__err-message">Ничего не найдено.</p>
+      )}
+      <MoviesCardList 
+        isBlockButton={isBlockButton}
+        showMovies={showMovies}
+        savedMovies={savedMovies}
+        savedmoviesFilter={savedmoviesFilter}
+        onMovieLike={onMovieLike}
+        resStatus={resStatus}
+        location={location}
+      />
     </section>
   );
 }

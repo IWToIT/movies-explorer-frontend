@@ -1,0 +1,9 @@
+export const otherPaths = ['/', '/movies', '/saved-movies'];
+export const authPath = ['/signin', '/signup'];
+export const moviesPath = ['/movies', '/saved-movies' , '/profile'];
+export const valueLocal = localStorage.getItem('search-value');
+export const checkboxLocal = localStorage.getItem('search-checkbox');
+export const moviesLocal = localStorage.getItem(`movies`);
+export const length = 40;
+export const valueShowMovieForDesktop = 7; // сколько фильмов добавить при клике по кнопке "Ещё" на ПК
+export const valueShowMovieForMobile = 5; // сколько фильмов добавить при клике по кнопке "Ещё" на мобильном

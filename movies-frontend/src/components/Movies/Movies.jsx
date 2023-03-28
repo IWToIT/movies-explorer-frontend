@@ -1,13 +1,46 @@
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-/* import Preloader from "../Preloader/Preloader"; реализовать когда будет подключен API*/
-import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SearchForm from '../SearchForm/SearchForm';
 
-function Movies({ location }) {
+function Movies({
+  isBlockButton,
+  allMovieslist,
+  showMovies,
+  moviesFilter,
+  savedMovies,
+  resStatus,
+  isLoadingMovies,
+  location,
+  formValues,
+  onSearchFilms,
+  onMovieLike,
+  onButtonOfMore,
+  checkboxFilter,
+}) {
   return (
     <section className="movies">
-      <SearchForm />
-      {/* <Preloader /> реализовать когда будет подключен API */}
-      <MoviesCardList location={location} />
+      <SearchForm
+        isBlockButton={isBlockButton}
+        checkboxFilter={checkboxFilter}
+        formValues={formValues}
+        onSearchFilms={onSearchFilms}
+        location={location}
+      />
+      <p className="movies__err-message">
+        {!allMovieslist.length
+          ? 'Нет результатов.'
+          : !moviesFilter.length && 'Ничего не найдено.'}
+      </p>
+      <MoviesCardList
+        isBlockButton={isBlockButton}
+        showMovies={showMovies}
+        onButtonOfMore={onButtonOfMore}
+        onMovieLike={onMovieLike}
+        resStatus={resStatus}
+        isLoadingMovies={isLoadingMovies}
+        moviesFilter={moviesFilter}
+        savedMovies={savedMovies}
+        location={location}
+      />
     </section>
   );
 }

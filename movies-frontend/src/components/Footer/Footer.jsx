@@ -1,13 +1,13 @@
-function Footer({ location }) {
-  const notAllowedPaths = ['/', '/movies', '/saved-movies'].includes(location.pathname);
+import { otherPaths } from "../../constants/constants";
 
+function Footer({ location }) {
   return (
     <>
-      {notAllowedPaths && (
+      {otherPaths.includes(location.pathname) && (
         <footer className="footer">
           <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
           <div className="footer__container">
-            <span className="footer__year">Egor M. © 2023</span>
+            <span className="footer__author">Egor M. © 2023</span>
             <ul className="footer__list">
               <li>
                 <a className="footer__link" href="https://practicum.yandex.ru/" target="_blank" rel="noreferrer">

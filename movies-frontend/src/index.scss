@@ -4,15 +4,15 @@
 @import './components/Preloader/Preloader.scss';
 @import './styles/logo.scss';
 @import './styles/body.scss';
+@import './styles/form.scss';
 
 @import './components/App/App.scss';
 @import './components/Header/Header.scss';
-@import './components/Navigation/Navigation.scss';
 @import './components/Main/Main.scss';
 @import './components/Promo/Promo.scss';
 @import './components/NavTab/NavTab.scss';
 @import './components/AboutProject/AboutProject.scss';
-@import './components/Techs/Techs.scss';
+@import './components/Technologies/Technologies.scss';
 @import './components/AboutMe/AboutMe.scss';
 @import './components/Portfolio/Portfolio.scss';
 @import './components/Movies/Movies.scss';
@@ -21,6 +21,7 @@
 @import './components/MoviesCard/MoviesCard.scss';
 @import './components/SavedMovies/SavedMovies.scss';
 @import './components/Profile/Profile.scss';
-@import './styles/form.scss';
+@import './components/InfoPopup/InfoPopup.scss';
 @import './components/Footer/Footer.scss';
 @import './components/NotFound/NotFound.scss';
+@import './components/Nav/Nav.scss';
